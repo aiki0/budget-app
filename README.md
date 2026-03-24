@@ -1,6 +1,11 @@
-**Ohjelmistotekniikka harjoitustyö**
+# Budjetointisovellus
 
-En ole päättänyt aihetta vielä
+> Ohjelmistotekniikka-kurssin harjoitustyö.
 
+### Dokumentaatio
+-  [Vaatimusmäärittely](./dokumentaatiot/vaatimusmaarittely.md)
+-  [Työaikakirjanpito](./dokumentaatiot/tyoaikakirjanpito.md)
 
-[Laskarit](./laskarit)
+### Harjoitukset (Laskarit)
+- [Laskarit-hakemisto](./laskarit)
+- [Viikko 1](./laskarit/viikko1.md)
