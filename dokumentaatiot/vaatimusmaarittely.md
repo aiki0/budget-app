@@ -17,7 +17,7 @@
 * Mahdollisuus korjata aiempia kirjauksia, poistaa turhia menoja tai muokata tulojen tietoja
 * Käyttäjä syöttää menoja ja tuloja, jotka lajitellaan tiettyyn kategoriaan. Kirjaukseen voi lisätä myös lyhyen kuvauksen
 * Sovellus laskee ja näyttää ajantasaisen rahatilanteen heti muutosten jälkeen
-* Kaikki käyttäjän syöttämä tieto tallennetaan tietokantaan
+* Kaikki käyttäjän syöttämä tieto tallennetaan tietokantaan✅
 
 ## Jatkokehitysideat
 
