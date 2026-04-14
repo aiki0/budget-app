@@ -1,0 +1,29 @@
+[project]
+name = "budget-app"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Aiki0",email = "veeti.aikio@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "bcrypt (>=5.0.0,<6.0.0)",
+    "invoke (>=3.0.3,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.3,<10.0.0)",
+    "pylint (>=4.0.5,<5.0.0)",
+    "autopep8 (>=2.3.2,<3.0.0)",
+    "coverage (>=7.13.5,<8.0.0)"
+]
+[tool.pytest.ini_options]
+testpaths = ["src"]
