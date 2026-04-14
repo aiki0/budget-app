@@ -3,7 +3,7 @@ name = "budget-app"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Aiki0",email = "veeti.aikio@gmail.com"}
+    {name = "Aiki0", email = "veeti.aikio@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.12"
@@ -13,6 +13,8 @@ dependencies = [
     "invoke (>=3.0.3,<4.0.0)"
 ]
 
+[tool.poetry]
+package-mode = false
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -25,5 +27,6 @@ dev = [
     "autopep8 (>=2.3.2,<3.0.0)",
     "coverage (>=7.13.5,<8.0.0)"
 ]
+
 [tool.pytest.ini_options]
 testpaths = ["src"]
