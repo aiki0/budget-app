@@ -18,7 +18,7 @@ def test(ctx):
 @task
 def lint(ctx):
     """Suorittaa koodin laadunvalvonnan (Pylint)."""
-    ctx.run("pylint src", pty=False)
+    ctx.run("pylint src", env={"PYTHONPATH": "src"}, pty=False)
 
 @task
 def coverage(ctx):

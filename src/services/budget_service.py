@@ -3,7 +3,8 @@ class BudgetService:
         self._repository = repository
 
     def lisaa_kulu(self, maara, kategoria):
-        if maara <= 0: return False
+        if maara <= 0:
+            return False
         self._repository.create(maara, kategoria)
         return True
 

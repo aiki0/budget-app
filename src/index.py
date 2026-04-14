@@ -1,5 +1,4 @@
 from database.database_connection import get_database_connection
-from database.initialize_database import initialize_database
 from repositories.budget_repository import BudgetRepository
 from services.budget_service import BudgetService
 from ui.ui import UI
