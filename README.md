@@ -6,6 +6,7 @@
 -  [Vaatimusmäärittely](./dokumentaatiot/vaatimusmaarittely.md)
 -  [Työaikakirjanpito](./dokumentaatiot/tyoaikakirjanpito.md)
 -  [Arkkitehtuurikuvaus](./dokumentaatiot/arkkitehtuuri.md)
+-  [Changelog](./dokumentaatiot/changelog.md)
 
 ### Harjoitukset (Laskarit)
 - [Laskarit-hakemisto](./laskarit)
