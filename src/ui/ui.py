@@ -81,7 +81,6 @@ def start_ui(service):
             if not selection:
                 messagebox.showinfo("Huom", "Valitse poistettava kulu listasta.")
                 return
-            
             index = selection[0]
             expenses = service.hae_kaikki()
             expense_id = expenses[index]["id"]
