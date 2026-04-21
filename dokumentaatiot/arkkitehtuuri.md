@@ -51,6 +51,11 @@ classDiagram
         +get_database_connection()
     }
 ```
+## Sovelluslogiikka
+
+Tässä kuvataan sovelluksen toimintaa sekvenssikaavion avulla:
+### Kulun lisääminen
+Kun käyttäjä syöttää kulun tiedot ja klikkaa tallennuspainiketta, ohjelman sisäinen eteneminen tapahtuu seuraavasti:
 ```mermaid
 sequenceDiagram
     actor User
