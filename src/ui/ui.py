@@ -1,43 +1,53 @@
-class UI:
-    """Sovelluksen käyttöliittymästä vastaava luokka."""
+import tkinter as tk
+from tkinter import messagebox
 
-    def __init__(self, service):
-        self._service = service
+def start_ui(service):
+    root = tk.Tk()
+    root.title("Budjettisovellus")
+    root.geometry("450x600")
 
-    def start(self):
-        print("--- Budjettisovellus ---")
-        print("Komennot:")
-        print("1: Lisää kulu")
-        print("2: Listaa kulut")
-        print("0: Lopeta")
+    def update_list():
+        expense_listbox.delete(0, tk.END)
+        expenses = service.hae_kaikki()
 
-        while True:
-            komento = input("\nValitse komento: ")
+        for expense in expenses:
+            expense_listbox.insert(tk.END, f"{expense['category']}: {expense['amount']}€")
 
-            if komento == "0":
-                break
-            
-            elif komento == "1":
-                try:
-                    maara_syote = input("Määrä: ")
-                    if not maara_syote:
-                        print("Virhe: Määrä ei voi olla tyhjä!")
-                        continue
-                    
-                    maara = int(maara_syote)
-                    kategoria = input("Kategoria: ")
-                    
-                    self._service.lisaa_kulu(maara, kategoria)
-                    print("Kulu lisätty!")
-                except ValueError:
-                    print("Virhe: Syötä määrä numerona.")
+    def handle_add_expense():
+        amount_input = amount_entry.get()
+        category_input = category_entry.get()
 
-            elif komento == "2":
-                kulut = self._service.hae_kaikki()
-                if not kulut:
-                    print("Ei kuluja vielä.")
-                for kulu in kulut:
-                    print(f"{kulu['category']}: {kulu['amount']}€")
-            
-            else:
-                print("Tuntematon komento.")
+        if not amount_input:
+            messagebox.showerror("Virhe", "Määrä ei voi olla tyhjä!")
+            return
+        try:
+            amount = int(amount_input)
+            service.lisaa_kulu(amount, category_input)
+            amount_entry.delete(0, tk.END)
+            category_entry.delete(0, tk.END)
+            update_list()
+        except ValueError:
+            messagebox.showerror("Virhe", "Syötä määrä numerona.")
+
+
+    title_label = tk.Label(master=root, text="Lisää uusi kulu")
+    title_label.pack()
+
+    amount_label = tk.Label(master=root, text="Kulu €:")
+    amount_label.pack()
+    amount_entry = tk.Entry(master=root)
+    amount_entry.pack()
+
+    category_label = tk.Label(master=root, text="Kategoria:")
+    category_label.pack()
+    category_entry = tk.Entry(master=root)
+    category_entry.pack()
+
+    add_button = tk.Button(master=root, text="Tallenna kulu",command=handle_add_expense)
+    add_button.pack()
+
+    expense_listbox = tk.Listbox(master=root)
+    expense_listbox.pack()
+
+    update_list()
+    root.mainloop()
