@@ -22,6 +22,9 @@ class BudgetService:
             return False
         self._repository.create(maara, kategoria, self._user["username"])
         return True
+    
+    def delete_expense(self, expense_id):
+        self._repository.delete(expense_id)
 
     def hae_kaikki(self):
         if not self._user:

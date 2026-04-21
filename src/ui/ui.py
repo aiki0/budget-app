@@ -75,6 +75,20 @@ def start_ui(service):
             except ValueError:
                 messagebox.showerror("Virhe", "Syötä määrä numerona.")
 
+        def handle_delete_expense():
+            selection = expense_listbox.curselection()
+            
+            if not selection:
+                messagebox.showinfo("Huom", "Valitse poistettava kulu listasta.")
+                return
+            
+            index = selection[0]
+            expenses = service.hae_kaikki()
+            expense_id = expenses[index]["id"]
+            
+            service.delete_expense(expense_id)
+            update_list()
+
 
         title_label = tk.Label(master=root, text="Lisää uusi kulu")
         title_label.pack()
@@ -91,6 +105,9 @@ def start_ui(service):
 
         add_button = tk.Button(master=root, text="Tallenna kulu", command=handle_add_expense)
         add_button.pack()
+
+        delete_button = tk.Button(master=root, text="Poista kulu", command=handle_delete_expense)
+        delete_button.pack()
 
         expense_listbox = tk.Listbox(master=root)
         expense_listbox.pack()
