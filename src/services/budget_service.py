@@ -17,16 +17,16 @@ class BudgetService:
         self._user_repository.create(username, password)
         return True
 
-    def lisaa_kulu(self, maara, kategoria):
+    def add_expense(self, maara, kategoria):
         if not self._user or maara <= 0:
             return False
         self._repository.create(maara, kategoria, self._user["username"])
         return True
-    
+
     def delete_expense(self, expense_id):
         self._repository.delete(expense_id)
 
-    def hae_kaikki(self):
+    def get_all(self):
         if not self._user:
             return []
         return self._repository.find_all(self._user["username"])

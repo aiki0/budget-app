@@ -78,32 +78,32 @@ class TestBudgetService(unittest.TestCase):
 
     def test_create_expense(self):
         self.login_user()
-        self.service.lisaa_kulu(100, "ruoka")
+        self.service.add_expense(100, "ruoka")
         
-        expenses = self.service.hae_kaikki()
+        expenses = self.service.get_all()
         self.assertEqual(len(expenses),1)
         self.assertEqual(expenses[0]["amount"], 100)
         self.assertEqual(expenses[0]["category"], "ruoka")
 
     def test_create_expense_invalid_amount(self):
         self.login_user()
-        result = self.service.lisaa_kulu(-10, "virhe")
+        result = self.service.add_expense(-10, "virhe")
         self.assertFalse(result)
 
     def test_delete_expense(self):
         self.login_user()
-        self.service.lisaa_kulu(50, "leffa")
+        self.service.add_expense(50, "leffa")
         
-        expenses = self.service.hae_kaikki()
+        expenses = self.service.get_all()
         expense_id = expenses[0]["id"]
         
         self.service.delete_expense(expense_id)
         
-        remaining_expenses = self.service.hae_kaikki()
+        remaining_expenses = self.service.get_all()
         self.assertEqual(len(remaining_expenses), 0)
 
     def test_get_all_without_login(self):
-        expenses = self.service.hae_kaikki()
+        expenses = self.service.get_all()
         self.assertEqual(expenses, [])
 
     def test_register_existing_user(self):

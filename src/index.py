@@ -5,12 +5,11 @@ from services.budget_service import BudgetService
 from ui.ui import start_ui
 
 def main():
-
     connection = get_database_connection()
     repository = BudgetRepository(connection)
     user_repository = UserRepository(connection)
     service = BudgetService(repository, user_repository)
-    
+
     start_ui(service)
 
 if __name__ == "__main__":

@@ -54,7 +54,7 @@ def start_ui(service):
 
         def update_list():
             expense_listbox.delete(0, tk.END)
-            expenses = service.hae_kaikki()
+            expenses = service.get_all()
 
             for expense in expenses:
                 expense_listbox.insert(tk.END, f"{expense['category']}: {expense['amount']}€")
@@ -68,7 +68,7 @@ def start_ui(service):
                 return
             try:
                 amount = int(amount_input)
-                service.lisaa_kulu(amount, category_input)
+                service.add_expense(amount, category_input)
                 amount_entry.delete(0, tk.END)
                 category_entry.delete(0, tk.END)
                 update_list()
@@ -82,7 +82,7 @@ def start_ui(service):
                 messagebox.showinfo("Huom", "Valitse poistettava kulu listasta.")
                 return
             index = selection[0]
-            expenses = service.hae_kaikki()
+            expenses = service.get_all()
             expense_id = expenses[index]["id"]
             
             service.delete_expense(expense_id)

@@ -8,7 +8,7 @@ class BudgetRepository:
             "INSERT INTO expenses (amount, category, user_id) VALUES (?, ?, ?)",
             (amount, category, user_id))
         self._connection.commit()
-        
+
     def delete(self, expense_id):
         cursor = self._connection.cursor()
         cursor.execute("DELETE FROM expenses WHERE id = ?", (expense_id,))
