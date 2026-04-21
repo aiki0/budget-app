@@ -3,15 +3,23 @@ from database.database_connection import get_database_connection
 def drop_tables(connection):
     cursor = connection.cursor()
     cursor.execute("DROP TABLE IF EXISTS expenses;")
+    cursor.execute("DROP TABLE IF EXISTS users;")
     connection.commit()
 
 def create_tables(connection):
     cursor = connection.cursor()
     cursor.execute("""
+        CREATE TABLE users (
+            username TEXT PRIMARY KEY,
+            password TEXT
+        );
+    """)
+    cursor.execute("""
         CREATE TABLE expenses (
             id INTEGER PRIMARY KEY,
             amount INTEGER,
-            category TEXT
+            category TEXT,
+            user_id TEXT REFERENCES users
         );
     """)
     connection.commit()
