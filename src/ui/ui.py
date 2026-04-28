@@ -87,6 +87,42 @@ def start_ui(service):
             
             service.delete_expense(expense_id)
             update_list()
+        def handle_edit_expense():
+                    selection = expense_listbox.curselection()
+                    if not selection:
+                        messagebox.showinfo("Huom", "Valitse muokattava kulu listasta.")
+                        return
+
+                    index = selection[0]
+                    expenses = service.get_all()
+                    selected_expense = expenses[index]
+
+                    edit_window = tk.Toplevel(root)
+                    edit_window.title("Muokkaa kulua")
+                    edit_window.geometry("300x250")
+
+                    tk.Label(master=edit_window, text="Uusi kulu €:").pack()
+                    new_amount_entry = tk.Entry(master=edit_window)
+                    new_amount_entry.insert(0, str(selected_expense["amount"]))
+                    new_amount_entry.pack()
+
+                    tk.Label(master=edit_window, text="Uusi kategoria:").pack()
+                    new_category_entry = tk.Entry(master=edit_window)
+                    new_category_entry.insert(0, selected_expense["category"])
+                    new_category_entry.pack()
+
+                    def save_edit():
+                        new_category = new_category_entry.get()
+                        try:
+                            new_amount = int(new_amount_entry.get())
+                            service.edit_expense(selected_expense["id"], new_amount, new_category)
+                            
+                            update_list()
+                            edit_window.destroy()
+                        except ValueError:
+                            messagebox.showerror("Virhe", "Syötä määrä numerona.", parent=edit_window)
+
+                    tk.Button(master=edit_window, text="Tallenna muutokset", command=save_edit).pack()
 
 
         title_label = tk.Label(master=root, text="Lisää uusi kulu")
@@ -107,6 +143,9 @@ def start_ui(service):
 
         delete_button = tk.Button(master=root, text="Poista kulu", command=handle_delete_expense)
         delete_button.pack()
+
+        edit_button = tk.Button(master=root, text="Muokkaa valittua", command=handle_edit_expense)
+        edit_button.pack()
 
         expense_listbox = tk.Listbox(master=root)
         expense_listbox.pack()

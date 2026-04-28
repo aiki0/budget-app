@@ -26,6 +26,12 @@ class BudgetService:
     def delete_expense(self, expense_id):
         self._repository.delete(expense_id)
 
+    def edit_expense(self, expense_id, new_amount, new_category):
+            if not self._user or new_amount <= 0:
+                return False
+            self._repository.update(expense_id, new_amount, new_category)
+            return True
+
     def get_all(self):
         if not self._user:
             return []
