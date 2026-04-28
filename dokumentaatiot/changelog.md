@@ -21,3 +21,10 @@
 - Lisätty `UserRepository`-luokka käyttäjätietojen hallintaan
 - Testien päivittäminen vastaamaan uutta logiikkaa
 - Luokkakaavion päivitys sekä sekvenssikaavion lisäys
+
+## Viikko 6
+
+- Lisätty käyttäjälle mahdollisuus muokata olemassa olevien kulujen summaa ja kategoriaa
+- Kirjoitettu Docstring-dokumentaatiot sovelluksen lähes kaikkialle
+- Lisätty tietokantaoperaatioiden testaus käyttämällä SQlite-testitietokantaa
+- Nostettu testikattavuus reilusti yli 60 % rajan
