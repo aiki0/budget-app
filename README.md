@@ -7,6 +7,7 @@
 -  [Työaikakirjanpito](./dokumentaatiot/tyoaikakirjanpito.md)
 -  [Arkkitehtuurikuvaus](./dokumentaatiot/arkkitehtuuri.md)
 -  [Changelog](./dokumentaatiot/changelog.md)
+-  [Käyttöohje](./dokumentaatiot/kayttoohje.md)
 ### Release
 -  [Viikko 5](https://github.com/aiki0/budget-app/releases/tag/viikko5)
 
