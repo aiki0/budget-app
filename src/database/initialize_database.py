@@ -1,12 +1,14 @@
 from database.database_connection import get_database_connection
 
 def drop_tables(connection):
+    """Poistaa tietokantataulut jos ne ovat olemassa."""
     cursor = connection.cursor()
     cursor.execute("DROP TABLE IF EXISTS expenses;")
     cursor.execute("DROP TABLE IF EXISTS users;")
     connection.commit()
 
 def create_tables(connection):
+    """Luo tietokantataulut käyttäjille ja kuluille."""
     cursor = connection.cursor()
     cursor.execute("""
         CREATE TABLE users (
@@ -25,6 +27,7 @@ def create_tables(connection):
     connection.commit()
 
 def initialize_database():
+    """Allustaa tietokannan poistamalla vanhat taulut ja luo uuet."""
     connection = get_database_connection()
     drop_tables(connection)
     create_tables(connection)
