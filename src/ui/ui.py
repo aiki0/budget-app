@@ -64,16 +64,19 @@ def start_ui(service):
             category_input = category_entry.get()
 
             if not amount_input:
-                messagebox.showerror("Virhe", "Määrä ei voi olla tyhjä!")
+                messagebox.showerror("Virhe", "Kulu ei voi olla tyhjä!")
                 return
             try:
                 amount = int(amount_input)
-                service.add_expense(amount, category_input)
-                amount_entry.delete(0, tk.END)
-                category_entry.delete(0, tk.END)
-                update_list()
+                success = service.add_expense(amount, category_input)
+                if success:
+                    amount_entry.delete(0, tk.END)
+                    category_entry.delete(0, tk.END)
+                    update_list()
+                else:
+                    messagebox.showerror("Virhe", "Kulun on oltava suurempi kuin 0.")
             except ValueError:
-                messagebox.showerror("Virhe", "Syötä määrä numerona.")
+                messagebox.showerror("Virhe", "Syötä kulu numerona.")
 
         def handle_delete_expense():
             selection = expense_listbox.curselection()
@@ -87,6 +90,7 @@ def start_ui(service):
             
             service.delete_expense(expense_id)
             update_list()
+
         def handle_edit_expense():
                     selection = expense_listbox.curselection()
                     if not selection:
