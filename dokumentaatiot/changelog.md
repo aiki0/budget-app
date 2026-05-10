@@ -28,3 +28,13 @@
 - Kirjoitettu Docstring-dokumentaatiot sovelluksen lähes kaikkialle
 - Lisätty tietokantaoperaatioiden testaus käyttämällä SQlite-testitietokantaa
 - Nostettu testikattavuus reilusti yli 60 % rajan
+
+## Viikko 7
+
+- Poistettu tietokantapolun kovakoodaus ja toteutettu sovelluksen konfigurointi `.env`-tiedoston avulla
+- Lisätty `src/config.py`-tiedosto ympäristömuuttujien ja hakemistopolkujen keskitettyyn hallintaan
+- Toteutettu automaattinen `data`-hakemiston luonti sovelluksen käynnistyksen yhteydessä virheiden välttämiseksi
+- Parannettu virheiden käsittelyä ja validointia: kulun lisääminen tai muokkaaminen tyhjällä kategorialla estetty
+- Päivitetty testit käyttämään sovelluksen oikeaa konfiguraatiota ja alustusskriptejä integraatiotesteissä
+- Viimeistelty kaikki projektin dokumentit
+- Luotu projektista GitHub-release "loppupalautus"
