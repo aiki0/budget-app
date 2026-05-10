@@ -8,6 +8,7 @@
 -  [Arkkitehtuurikuvaus](./dokumentaatiot/arkkitehtuuri.md)
 -  [Changelog](./dokumentaatiot/changelog.md)
 -  [Käyttöohje](./dokumentaatiot/kayttoohje.md)
+-  [Testausdokumentti](./dokumentaatiot/testaus.md)
 ### Release
 -  [Viikko 5](https://github.com/aiki0/budget-app/releases/tag/viikko5)
 -  [Viikko 6](https://github.com/aiki0/budget-app/releases/tag/viikko6)
