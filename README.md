@@ -12,6 +12,7 @@
 ### Release
 -  [Viikko 5](https://github.com/aiki0/budget-app/releases/tag/viikko5)
 -  [Viikko 6](https://github.com/aiki0/budget-app/releases/tag/viikko6)
+-  [Viikko 7](https://github.com/aiki0/budget-app/releases/tag/viikko7)
 
 ### Harjoitukset (Laskarit)
 - [Laskarit-hakemisto](./laskarit)
