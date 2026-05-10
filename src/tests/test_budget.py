@@ -32,6 +32,13 @@ class FakeBudgetRepository:
         )
         self.expenses = list(expenses_without_id)
 
+    def update(self, expense_id, new_amount, new_category):
+        for expense in self.expenses:
+            if expense["id"] == expense_id:
+                expense["amount"] = new_amount
+                expense["category"] = new_category
+                break
+
 
 class FakeUserRepository:
     def __init__(self, users=None):
@@ -110,3 +117,16 @@ class TestBudgetService(unittest.TestCase):
         self.service.register(self.test_user, self.test_pass)
         result = self.service.register(self.test_user, "toinen_passu")
         self.assertFalse(result)
+    
+    def test_edit_expense_success(self):
+        self.login_user()
+        self.service.add_expense(50, "vanha")
+        expenses = self.service.get_all()
+        expense_id = expenses[0]["id"]
+        
+        result = self.service.edit_expense(expense_id, 100, "uusi")
+        self.assertTrue(result)
+        
+        updated = self.service.get_all()
+        self.assertEqual(updated[0]["amount"], 100)
+        self.assertEqual(updated[0]["category"], "uusi")
