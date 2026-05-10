@@ -19,7 +19,7 @@ Repositorio-luokkia `BudgetRepository` ja `UserRepository` testataan oikeaa tiet
 
 ### Testauskattavuus
 
-Käyttöliittymäkerrosta lukuun ottamatta sovelluksen testauksen haarautumakattavuus on 63 %.
+Käyttöliittymäkerrosta lukuun ottamatta sovelluksen testauksen haarautumakattavuus on 93 %.
 
 ![](./kuvat/testikattavuus.png)
 
