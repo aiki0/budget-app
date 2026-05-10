@@ -1,17 +1,15 @@
 import unittest
-import sqlite3
+
+from database.database_connection import get_database_connection
+from database.initialize_database import initialize_database
 from repositories.budget_repository import BudgetRepository
 from repositories.user_repository import UserRepository
 
 class TestRepositories(unittest.TestCase):
     def setUp(self):
-        self.connection = sqlite3.connect(":memory:")
-        self.connection.row_factory = sqlite3.Row
-
-        cursor = self.connection.cursor()
-        cursor.execute("CREATE TABLE users (username TEXT PRIMARY KEY, password TEXT)")
-        cursor.execute("CREATE TABLE expenses (id INTEGER PRIMARY KEY, amount INTEGER, category TEXT, user_id TEXT REFERENCES users)")
-        self.connection.commit()
+        initialize_database()
+        
+        self.connection = get_database_connection()
 
         self.budget_repo = BudgetRepository(self.connection)
         self.user_repo = UserRepository(self.connection)
