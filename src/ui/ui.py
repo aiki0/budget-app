@@ -2,15 +2,18 @@ import tkinter as tk
 from tkinter import messagebox
 
 def start_ui(service):
+    """Alustaa ja käynnistää graafisen käyttöliittymän pääikkunan."""
     root = tk.Tk()
     root.title("Budjettisovellus")
     root.geometry("450x600")
 
     def clear_window():
+        """Tyhjentää muistin pääikkunasta näkymän vaihtoa varten."""
         for widget in root.winfo_children():
             widget.destroy()
 
     def show_login():
+        """Muodostaa ja näyttää kirjautuminäkymän."""
         clear_window()
 
         tk.Label(master=root, text="Kirjaudu tai rekisteröidy").pack()
@@ -24,6 +27,7 @@ def start_ui(service):
         password_entry.pack()
 
         def handle_login():
+            
             username = username_entry.get()
             password = password_entry.get()
             
@@ -33,6 +37,7 @@ def start_ui(service):
                 messagebox.showerror("Virhe", "Väärä tunnus tai salasana.")
 
         def handle_register():
+            """Lukee syötteet ja hoitaa uuden käyttäjän luonnin."""
             username = username_entry.get()
             password = password_entry.get()
             
@@ -50,6 +55,7 @@ def start_ui(service):
 
 
     def show_main():
+        """Muodostaa ja näyttää sovelluksen päänäkymän kirjautumisen jälkeen."""
         clear_window()
 
         def update_list():
@@ -60,6 +66,7 @@ def start_ui(service):
                 expense_listbox.insert(tk.END, f"{expense['category']}: {expense['amount']}€")
 
         def handle_add_expense():
+            """Lukee syötteet ja lisää uuden kulun virhetarkistuksineen."""
             amount_input = amount_entry.get()
             category_input = category_entry.get()
 
@@ -79,6 +86,7 @@ def start_ui(service):
                 messagebox.showerror("Virhe", "Syötä kulu numerona.")
 
         def handle_delete_expense():
+            """Poistaa listasta valitun kulun tunnisteen perusteella."""
             selection = expense_listbox.curselection()
             
             if not selection:
@@ -92,6 +100,7 @@ def start_ui(service):
             update_list()
 
         def handle_edit_expense():
+                    """Avaa uuden ikkunan valitun kulun muokkaamista varten."""
                     selection = expense_listbox.curselection()
                     if not selection:
                         messagebox.showinfo("Huom", "Valitse muokattava kulu listasta.")
@@ -116,6 +125,7 @@ def start_ui(service):
                     new_category_entry.pack()
 
                     def save_edit():
+                        """Tallentaa tehdyt muutokset ja päivittää listan."""
                         new_category = new_category_entry.get()
                         try:
                             new_amount = int(new_amount_entry.get())
